@@ -1,15 +1,10 @@
 #include "libft.h"
 
-size_t	get_end(char const *s1, char const *set);
+char	*ft_strtrim(char const *s1, char const *set);
+// size_t	ft_strtrim(char const *s1, char const *set);
 
 int main(int ac, char const *av[])
 {
-	size_t n;
-	(void)av;
-
-	n = -2;
-	printf("%ld\n", n);
-
 	if (ac > 1)
 	{
 		// printf("dec = %d char = %c\n", argv[1][0], argv[1][0]);
@@ -23,7 +18,23 @@ int main(int ac, char const *av[])
 		// ft_putstr(ft_strtrim(av[1], av[2]));
 		// ft_putchar(av[1][0]);
 		// ft_strtrim(av[1], av[2]);
-		ft_putchar(ft_strtrim(av[1], av[2]));
+		// printf("trim = %s\n", ft_strtrim(av[1], av[2]));
+		// printf("split = %s\n", ft_split(av[1], av[2]));
+		// char **split = ft_split(av[1], *av[2]);
+		// ft_putstr(split[0]);
+		// printf("%s\n", split[0]);
+		// ft_split(av[1], *av[2]);
+		// char **split;
+
+		// split = ft_split(av[1], *av[2]);
+		// while (*split)
+		// {
+		// 	ft_putstr(*split++);
+		// 	ft_putchar('\n');
+		// }
+		// ft_itoa(ft_atoi(av[1]));
+		// printf("%s\n", ft_strrev(av[1]));
+		ft_putstr(ft_itoa(ft_atoi(av[1])));
 	}
 	return 0;
 }
