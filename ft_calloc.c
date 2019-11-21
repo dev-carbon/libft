@@ -1,20 +1,18 @@
-#include "libft"
+#include "libft.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*result;
-	size_t	i;
+	void		*res;
+	size_t		pos;
 
-	if (nitems == 0 || size == 0)
-		return (NULL);
-	result = malloc(size * nitems);
-	if (result == NULL)
-		return (result);
-	i = 0;
-	while (i < nitems)
+	pos = 0;
+	if (nmemb * size == 0)
 	{
-		((char *)result)[i] = 0;
-		i++;
+		count = 1;
+		size = 1;
 	}
-	return (result);
+	if (!(res = malloc(count * size)))
+		return (0);
+	ft_memset(res, '\0', size * count);
+	return (res);
 }
