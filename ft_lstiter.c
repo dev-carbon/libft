@@ -1,21 +1,13 @@
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list		*elmt_now;
-	t_list		*elmt_next;
-
-	if (lst && del)
+	if (lst && f)
 	{
-		elmt_now = *lst;
-		elmt_next = *lst;
-		while (elmt_next)
+		while (lst)
 		{
-			elmt_now = elmt_next;
-			elmt_next = elmt_next->next;
-			del(elmt_now->content);
-			free(elmt_now);
+			(*f)(lst->content);
+			lst = lst->next;
 		}
 	}
-	*lst = NULL;
 }
