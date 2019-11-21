@@ -2,18 +2,18 @@
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	unsigned int	count;
-	unsigned int	i;
+	size_t	pos;
+	size_t	len;
 
-	count = 0;
-	while (src[count] != '\0')
-		++count;
-	i = 0;
-	while (src[i] != '\0' && i < (size - 1))
+	pos = 0;
+	len = ft_strlen(src);
+	if (dstsize == 0)
+		return (len);
+	while (pos < (dstsize - 1) && src[pos] != '\0')
 	{
-		dest[i] = src[i];
-		++i;
+		dst[pos] = src[pos];
+		pos++;
 	}
-	dest[i] = '\0';
-	return (count);
+	dst[pos] = '\0';
+	return (len);
 }
