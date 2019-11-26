@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/26 15:39:37 by humanfou          #+#    #+#             */
-/*   Updated: 2019/11/26 15:39:38 by humanfou         ###   ########.fr       */
+/*   Created: 2019/11/26 15:32:12 by humanfou          #+#    #+#             */
+/*   Updated: 2019/11/26 15:35:39 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int		ft_isupper(int c)
 {
-	size_t	len;
-
-	len = ft_strlen(s);
-	while (*(s + len) != (char)c && len)
-		len--;
-	if (*(s + len) == (char)c)
-		return ((char *)(s + len));
-	return (NULL);
+	return (c >= 65 && c <= 90);
 }
