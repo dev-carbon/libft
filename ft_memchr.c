@@ -2,10 +2,10 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*ps;
+	unsigned char	*d;
 
-	ps = (unsigned char *)s;
-	while (*ps != '\0')
+	d = (unsigned char *)s;
+	while (*ps)
 	{
 		if (*ps == (unsigned char)c)
 			return ((void *)ps);

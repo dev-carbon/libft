@@ -1,23 +1,23 @@
 #include "libft.h"
 
-int		ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	n;
-	int	isNegative;
+	int	is_negative;
 
-	isNegative = 1;
+	is_negative = 1;
 	n = 0;
 	while (*nptr && (*nptr == ' ' || *nptr == '\n' || *nptr == '\t' ||
-			*nptr == '\v' || *nptr == '\f' || *nptr == '\r'))
-		++nptr;
+		*nptr == '\v' || *nptr == '\f' || *nptr == '\r'))
+		nptr++;
 	if (*nptr == '-')
-		isNegative = -1;
+		is_negative = -1;
 	if (*nptr == '-' || *nptr == '+')
-		++nptr;
+		nptr++;
 	while (*nptr && *nptr >= '0' && *nptr <= '9')
 	{
 		n = n * 10 + (*nptr - 48);
-		++nptr;
+		nptr++;
 	}
-	return (n * isNegative);
+	return (n * is_negative);
 }

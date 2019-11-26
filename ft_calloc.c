@@ -2,17 +2,17 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void		*res;
-	size_t		pos;
+	void	*res;
+	size_t	pos;
 
 	pos = 0;
-	if (nmemb * size == 0)
+	if (!(nmemb * size))
 	{
-		count = 1;
+		nmemb = 1;
 		size = 1;
 	}
-	if (!(res = malloc(count * size)))
-		return (0);
-	ft_memset(res, '\0', size * count);
+	if (!(res = malloc(nmemb * size)))
+		return (NULL);
+	ft_memset(res, 0, size * nmemb);
 	return (res);
 }
