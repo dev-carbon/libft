@@ -52,6 +52,10 @@ OBJ_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+
 bonus: $(OBJ) $(OBJ_BONUS)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
