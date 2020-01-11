@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/26 15:37:03 by humanfou          #+#    #+#             */
-/*   Updated: 2020/01/11 16:09:24 by humanfou         ###   ########.fr       */
+/*   Created: 2020/01/11 15:07:37 by humanfou          #+#    #+#             */
+/*   Updated: 2020/01/11 15:17:28 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strrev(char *str)
 {
-	unsigned char	*cs;
-	
-	cs = (unsigned char *)s;
-	while (*cs && n--)
+	size_t	i;
+	size_t	len;
+	char	swap;
+
+	i = -1;
+	len = ft_strlen(str);
+	while (++i < len / 2)
 	{
-		if (*cs == (unsigned char)c)
-			return ((void *)cs);
-		cs++;
+		swap = str[i];
+		str[i] = str[len - 1 - i];
+		str[len - 1 - i] = swap;
 	}
-	return (NULL);
+	return (str);
 }

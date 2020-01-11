@@ -6,7 +6,7 @@
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:38:54 by humanfou          #+#    #+#             */
-/*   Updated: 2019/11/26 15:38:55 by humanfou         ###   ########.fr       */
+/*   Updated: 2020/01/11 16:16:38 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	i = -1;
 	while (src[++i] && dst_len < size - 1)
 		dst[dst_len + i] = src[i];
-	dst[dat_len + i] = 0;
+	dst[dst_len + i] = 0;
 	return (len);
 }

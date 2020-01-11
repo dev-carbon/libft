@@ -13,6 +13,7 @@ SRCS = ft_memset.c \
 	ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
+	ft_isascii.c \
 	ft_isprint.c \
 	ft_toupper.c \
 	ft_tolower.c \
@@ -28,7 +29,7 @@ SRCS = ft_memset.c \
 	ft_substr.c \
 	ft_strjoin.c \
 	ft_strtrim.c \
-	ft_strsplit.c \
+	ft_split.c \
 	ft_itoa.c \
 	ft_strmapi.c \
 	ft_putchar_fd.c \
@@ -52,11 +53,12 @@ OBJ_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+bonus: $(OBJ) $(OBJ_BONUS)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-bonus: $(OBJ) $(OBJ_BONUS)
+$(NAME):
+	gcc $(CFLAGS) -c $(SRCS)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
