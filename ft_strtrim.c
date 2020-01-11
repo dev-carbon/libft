@@ -6,32 +6,52 @@
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 15:34:01 by humanfou          #+#    #+#             */
-/*   Updated: 2020/01/07 17:28:46 by humanfou         ###   ########.fr       */
+/*   Updated: 2020/01/11 17:14:27 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	check_set(char const *s1, char const *set)
+static int	check_set(char c, char const *set)
 {
-	if (ft_memcmp(s1, set, ft_strlen(set)) == 0)
-		return (1);
+	unsigned int i;
+
+	if (!set)
+		return (0);
+	i = 0;
+	while (set[i] != '\0')
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char		*ft_strtrim(char const *s1, char const *set)
 {
-	char	*trim;
-	size_t	start;
-	size_t	end;
+	char			*start;
+	char			*end;
+	char			*ret;
+	int				len;
+	unsigned int	i;
 
-	start = 0;
-	end = 0;
-	while (check_set(s1 + start, set))
-		start = start + ft_strlen(set);
-	end = ft_strlen(s1);
-	while (check_set(s1 + end - ft_strlen(set), set))
-		end = end - ft_strlen(set);
-	trim = ft_substr(s1, start, end - start);
-	return (trim);
+	if (!s1)
+		return (0);
+	start = (char *)s1;
+	end = (char *)s1 + ft_strlen(s1);
+	while (check_set(*start, set))
+		start++;
+	if (start < end)
+		end--;
+	while (check_set(*end, set))
+		end--;
+	len = end - start + 1;
+	if (!(ret = (char *)malloc(sizeof(char) * (len + 1))))
+		return (0);
+	i = 0;
+	while (len-- > 0)
+		ret[i++] = *start++;
+	ret[i] = '\0';
+	return (ret);
 }

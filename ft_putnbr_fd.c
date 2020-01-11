@@ -6,7 +6,7 @@
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 15:47:40 by humanfou          #+#    #+#             */
-/*   Updated: 2020/01/11 15:51:17 by humanfou         ###   ########.fr       */
+/*   Updated: 2020/01/11 17:26:35 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	long nb;
 
-	if (n < 0)
+	nb = n;
+	if (nb < 0)
+	{
 		ft_putchar_fd('-', fd);
-	nb = (n < 0) ? -n : n;
+		nb = -nb;
+	}
 	if (nb > 9)
 	{
 		ft_putnbr_fd(nb / 10, fd);

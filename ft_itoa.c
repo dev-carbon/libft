@@ -6,54 +6,45 @@
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 14:20:06 by humanfou          #+#    #+#             */
-/*   Updated: 2020/01/11 15:32:36 by humanfou         ###   ########.fr       */
+/*   Updated: 2020/01/11 17:17:09 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	get_size(int n)
+unsigned int		ft_get_size(unsigned int n)
 {
-	size_t	size;
+	unsigned int	size;
 
-	size = 1;
-	if (n < 0)
+	size = 0;
+	while (n >= 10)
 	{
-		n = -n;
-		size = size + 1;
-	}
-	while (n > 9)
-	{
-		n = n / 10;
+		n /= 10;
 		size++;
 	}
-	return (size);
+	return (size + 1);
 }
 
-char	*ft_itoa(int n)
+char				*ft_itoa(int n)
 {
-	char	*str;
-	size_t	size;
-	int		is_negative;
-	size_t	i;
+	unsigned int	nb;
+	unsigned int	size;
+	int				i;
+	char			*str;
 
-	is_negative = 0;
-	size = get_size(n);
-	if (!(str = malloc(sizeof(char) * size + 1)))
-		return (NULL);
-	i = -1;
+	nb = (n < 0) ? (unsigned int)(n * -1) : (unsigned int)n;
+	size = (n < 0) ? ft_get_size(nb) + 1 : ft_get_size(nb);
+	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
+		return (0);
 	if (n < 0)
+		str[0] = '-';
+	i = size - 1;
+	str[size] = '\0';
+	while (nb >= 10)
 	{
-		is_negative = 1;
-		n = -n;
+		str[i--] = (nb % 10) + '0';
+		nb /= 10;
 	}
-	while (n && ++i < size)
-	{
-		str[i] = (n % 10) + '0';
-		n = n / 10;
-	}
-	if (is_negative)
-		str[size - 1] = '-';
-	str[size] = 0;
-	return (ft_strrev(str));
+	str[i] = (nb % 10) + '0';
+	return (str);
 }
